@@ -5,7 +5,7 @@ Command Line Interface for [react-admin](https://github.com/marmelab/react-admin
 ## Install
 
 ```bash
-$ npm install -g ra-cli
+$ npm install -g react-admin-cli
 ```
 
 # Create Single Module
