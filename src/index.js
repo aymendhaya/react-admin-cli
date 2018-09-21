@@ -9,14 +9,14 @@ if (cl.valid && cl.operation === 'create') {
   if (!fs.existsSync(cl.module_name)) {
     fs.mkdirSync(cl.module_name);
     console.log(chalk.green.bold('|--' + cl.module_name));
-    fs.appendFile(cl.module_name + '/index.js', aorIndex(cl.add), function(err) {
+    fs.appendFile(cl.module_name + '/index.js', raIndex(cl.add), function(err) {
       if (err) throw err;
       console.log(chalk.green('\t|-- index.js'));
     });
     cl.add.map((filename, index) => {
-      let condition = aor(filename);
+      let condition = ra(filename);
       if (condition !== null) {
-        fs.appendFile(cl.module_name + '/' + filename + '.js', aor(filename), err => {
+        fs.appendFile(cl.module_name + '/' + filename + '.js', ra(filename), err => {
           if (err) throw err;
           console.log(chalk.green('\t|-- ' + filename + '.js'));
         });
@@ -41,13 +41,13 @@ if (cl.valid && cl.operation === 'create') {
   }
 } else if (cl.valid && cl.operation === 'update') {
   console.log(chalk.green.bold('|--' + cl.module_name));
-  fs.appendFile(cl.module_name + '/index.js', aorIndex(cl.add), function(err) {
+  fs.appendFile(cl.module_name + '/index.js', raIndex(cl.add), function(err) {
     if (err) throw err;
     console.log(chalk.green('\t|-- index.js'));
   });
   cl.add.map((filename, index) => {
-    if (aor(filename)) {
-      fs.appendFile(cl.module_name + '/' + filename + '.js', aor(filename), function(err) {
+    if (ra(filename)) {
+      fs.appendFile(cl.module_name + '/' + filename + '.js', ra(filename), function(err) {
         if (err) throw err;
         console.log(chalk.green('\t|-- ' + filename + '.js'));
       });
@@ -71,30 +71,30 @@ if (cl.valid && cl.operation === 'create') {
   console.log(cl.message, '\n\n', cl, '\n\n');
 }
 
-function aorIndex(subModules) {
+function raIndex(subModules) {
   let _imports = subModules.map(subModule => `import ${subModule} from './${subModule}';`).join('\n');
   let _exports = '\nexport default { ' + subModules.join(', ') + ' };';
   return _imports.concat(_exports);
 }
 
-function aor(moduleName) {
+function ra(moduleName) {
   let output = null;
   if (moduleName === 'Create') {
-    output = aorCreate();
+    output = raCreate();
   }
   if (moduleName === 'List') {
-    output = aorList();
+    output = raList();
   }
   if (moduleName === 'Show') {
-    output = aorShow();
+    output = raShow();
   }
   if (moduleName === 'Edit') {
-    output = aorEdit();
+    output = raEdit();
   }
   return output;
 }
 
-function aorCreate() {
+function raCreate() {
   items = cl.src.map(src => `<TextInput source="${src}" />`).join('\n\t');
 
   return `
@@ -114,7 +114,7 @@ export default props => (
 );
   `;
 }
-function aorShow() {
+function raShow() {
   items = cl.src.map(src => `<TextField source="${src}" />`).join('\n\t');
   return `
 import React from 'react';
@@ -129,7 +129,7 @@ export default props => (
 );
   `;
 }
-function aorEdit() {
+function raEdit() {
   items = cl.src.map(src => `<TextInput source="${src}" />`).join('\n\t');
 
   return `
@@ -150,7 +150,7 @@ function aorEdit() {
     `;
 }
 
-function aorList() {
+function raList() {
   items = cl.src.map(src => `<TextField source="${src}" />`).join('\n\t');
   return `
 import React from 'react';

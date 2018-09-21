@@ -1,6 +1,4 @@
 ## ra-cli 
-[![Build Status](https://travis-ci.org/aymendhaya/ra-cli.svg?branch=master)](https://travis-ci.org/aymendhaya/ra-cli) 
-[![npm version](https://img.shields.io/npm/v/ra-cli.svg?style=flat)](https://www.npmjs.com/package/ra-cli) 
 
 Command Line Interface for [react-admin](https://github.com/marmelab/react-admin/) Framework
 
@@ -13,7 +11,7 @@ $ npm install -g ra-cli
 # Create Single Module
 >(Note: this cli will take the folder name as same as resource name. That will make things look simpler and better)
 ```
-$aor create first_module add List sources id firstname lastname
+$ra create first_module add List sources id firstname lastname
 ```
 
  Console Output:
@@ -77,7 +75,7 @@ import FirstModule from './components/first_module';
 # Create Multiple Modules
 
 ```
- $aor create second_module add List Create Edit sources id firstname lastname
+ $ra create second_module add List Create Edit sources id firstname lastname
 ```
 
  Result:
