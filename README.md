@@ -1,4 +1,4 @@
-## ra-cli 
+## react-admin-cli 
 
 Command Line Interface for [react-admin](https://github.com/marmelab/react-admin/) Framework
 

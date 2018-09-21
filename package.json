@@ -1,5 +1,5 @@
 {
-  "name": "ra-cli",
+  "name": "react-admin-cli",
   "version": "0.0.1",
   "preferGlobal": true,
   "description": "Command Line Interface for react-admin Framework",
